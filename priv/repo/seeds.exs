@@ -26,5 +26,7 @@
     resource_id: "2"
   }
 ] |> Enum.each(fn attrs ->
-  BusinessAuditLog.Repo.insert!(Map.merge(%BusinessAuditLog.AuditLog.LogEntry{}, attrs))
+  %BusinessAuditLog.AuditLog.LogEntry{}
+  |> Map.merge(attrs)
+  |> BusinessAuditLog.Repo.insert!
 end)

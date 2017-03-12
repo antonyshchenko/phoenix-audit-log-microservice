@@ -14,6 +14,7 @@ defmodule BusinessAuditLog.Application do
       supervisor(BusinessAuditLog.Web.Endpoint, []),
       # Start your own worker by calling: BusinessAuditLog.Worker.start_link(arg1, arg2, arg3)
       # worker(BusinessAuditLog.Worker, [arg1, arg2, arg3]),
+      supervisor(BusinessAuditLog.AuditLog.SqsListener.Supervisor, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

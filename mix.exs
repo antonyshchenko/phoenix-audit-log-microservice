@@ -18,7 +18,12 @@ defmodule BusinessAuditLog.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {BusinessAuditLog.Application, []},
-     extra_applications: [:logger]]
+     extra_applications: [
+       :logger,
+       :ex_aws,
+       :hackney,
+       :poison
+    ]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,7 +41,12 @@ defmodule BusinessAuditLog.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:ex_aws, "~> 1.1.0"},
+     {:configparser_ex, "~> 0.2.1"},
+     {:poison, "~> 2.0"},
+     {:hackney, "1.6.5"},
+     {:sweet_xml, "~> 0.6.5"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
