@@ -1,0 +1,9 @@
+postgres:
+  image: postgres
+  container_name: audit_log_docker
+  ports:
+    - 5000:5432
+  environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=audit_log_dev
