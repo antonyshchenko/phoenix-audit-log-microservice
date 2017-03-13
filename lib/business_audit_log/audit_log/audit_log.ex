@@ -18,7 +18,10 @@ defmodule BusinessAuditLog.AuditLog do
 
   """
   def list_entries do
-    Repo.all(LogEntry)
+    query = from log_entry in LogEntry,
+      order_by: [desc: log_entry.inserted_at]
+
+    Repo.all(query)
   end
 
   @doc """
