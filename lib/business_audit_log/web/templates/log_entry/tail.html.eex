@@ -1,0 +1,16 @@
+<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+
+<h1>Business audit log tail</h1>
+
+<table id="log-entries" class="table">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Resource</th>
+      <th>Action</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>

@@ -5,7 +5,6 @@ defmodule BusinessAuditLog.AuditLogTest do
   alias BusinessAuditLog.AuditLog.LogEntry
 
   @create_attrs %{action: "some action", actor_id: "some actor_id", actor_type: "some actor_type", resource_id: "some resource_id", resource_type: "some resource_type"}
-  @update_attrs %{action: "some updated action", actor_id: "some updated actor_id", actor_type: "some updated actor_type", resource_id: "some updated resource_id", resource_type: "some updated resource_type"}
   @invalid_attrs %{action: nil, actor_id: nil, actor_type: nil, resource_id: nil, resource_type: nil}
 
   def fixture(:log_entry, attrs \\ @create_attrs) do

@@ -28,7 +28,8 @@ defmodule BusinessAuditLog.Web.Api.LogEntryControllerTest do
         "actor_id" => "1",
         "actor_type" => "user",
         "resource_id" => "2",
-        "resource_type" => "user"
+        "resource_type" => "user",
+        "created_at" => NaiveDateTime.to_iso8601(entry.inserted_at)
       }],
       "page_number" => 1,
       "page_size" => 10,

@@ -1,22 +1,10 @@
 defmodule BusinessAuditLog.AuditLog do
-  @moduledoc """
-  The boundary for the AuditLog system.
-  """
-
   import Ecto.{Query, Changeset}, warn: false
   alias BusinessAuditLog.Repo
-
   alias BusinessAuditLog.AuditLog.LogEntry
+  alias BusinessAuditLog.Web.TailChannel
+  require Logger
 
-  @doc """
-  Returns the list of entries.
-
-  ## Examples
-
-      iex> list_entries()
-      [%LogEntry{}, ...]
-
-  """
   def list_entries(pagination_params) do
     query = from log_entry in LogEntry,
       order_by: [desc: log_entry.inserted_at]
@@ -34,22 +22,16 @@ defmodule BusinessAuditLog.AuditLog do
     Repo.paginate(query, pagination_params)
   end
 
-  @doc """
-  Creates a log_entry.
-
-  ## Examples
-
-      iex> create_log_entry(log_entry, %{field: value})
-      {:ok, %LogEntry{}}
-
-      iex> create_log_entry(log_entry, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def create_log_entry(attrs \\ %{}) do
-    %LogEntry{}
-    |> log_entry_changeset(attrs)
-    |> Repo.insert()
+    with {:ok, log_entry} <- %LogEntry{}
+                              |> log_entry_changeset(attrs)
+                              |> Repo.insert(),
+         {:ok, log_entry} <- TailChannel.broadcast_new_entry(log_entry)
+    do
+      {:ok, log_entry}
+    else
+      error -> error
+    end
   end
 
   defp log_entry_changeset(%LogEntry{} = log_entry, attrs) do

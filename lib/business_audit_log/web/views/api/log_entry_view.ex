@@ -16,6 +16,7 @@ defmodule BusinessAuditLog.Web.Api.LogEntryView do
       actor_type: log_entry.actor_type,
       action: log_entry.action,
       resource_id: log_entry.resource_id,
-      resource_type: log_entry.resource_type}
+      resource_type: log_entry.resource_type,
+      created_at: log_entry.inserted_at}
   end
 end

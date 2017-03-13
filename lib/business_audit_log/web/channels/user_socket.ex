@@ -2,7 +2,7 @@ defmodule BusinessAuditLog.Web.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", BusinessAuditLog.Web.RoomChannel
+  channel "log_tail", BusinessAuditLog.Web.TailChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

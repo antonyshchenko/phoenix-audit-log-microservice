@@ -18,6 +18,7 @@ defmodule BusinessAuditLog.Web.Router do
     pipe_through :browser
 
     get "/", LogEntryController, :index
+    get "/tail", LogEntryController, :tail
   end
 
   scope "/api", BusinessAuditLog.Web.Api, as: :api do
