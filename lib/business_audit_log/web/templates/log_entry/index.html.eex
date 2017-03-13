@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= for log_entry <- @entries do %>
+    <%= for log_entry <- @log_entries_page.entries do %>
       <tr>
         <td><%= log_entry.actor_type %>:<%= log_entry.actor_id %></td>
         <td><%= log_entry.resource_type %>:<%= log_entry.resource_id %></td>
@@ -20,3 +20,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= pagination_links @log_entries_page %>

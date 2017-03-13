@@ -1,5 +1,6 @@
 defmodule BusinessAuditLog.Repo do
   use Ecto.Repo, otp_app: :business_audit_log
+  use Scrivener
 
   @doc """
   Dynamically loads the repository url from the

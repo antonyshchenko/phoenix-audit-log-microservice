@@ -15,7 +15,14 @@ defmodule BusinessAuditLog.AuditLogTest do
 
   test "list_entries/1 returns all entries" do
     log_entry = fixture(:log_entry)
-    assert AuditLog.list_entries() == [log_entry]
+    assert AuditLog.list_entries(%{page: 1, page_size: 10}) ==
+      %Scrivener.Page{
+        entries: [log_entry],
+        page_number: 1,
+        page_size: 10,
+        total_entries: 1,
+        total_pages: 1
+      }
   end
 
   test "create_log_entry/1 with valid data creates a log_entry" do

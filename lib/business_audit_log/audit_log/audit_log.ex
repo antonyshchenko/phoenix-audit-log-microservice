@@ -17,11 +17,21 @@ defmodule BusinessAuditLog.AuditLog do
       [%LogEntry{}, ...]
 
   """
-  def list_entries do
+  def list_entries(pagination_params) do
     query = from log_entry in LogEntry,
       order_by: [desc: log_entry.inserted_at]
 
-    Repo.all(query)
+    Repo.paginate(query, pagination_params)
+  end
+
+  def list_entries_by_resource(resource_type, resource_id, pagination_params) do
+    query = from log_entry in LogEntry,
+      where:
+        log_entry.resource_type == ^resource_type and
+        log_entry.resource_id == ^resource_id,
+      order_by: [desc: log_entry.inserted_at]
+
+    Repo.paginate(query, pagination_params)
   end
 
   @doc """

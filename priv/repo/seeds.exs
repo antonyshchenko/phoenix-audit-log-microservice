@@ -24,7 +24,42 @@
     action: "user enabled",
     resource_type: "user",
     resource_id: "2"
-  }
+  },
+  %{
+    actor_type: "user",
+    actor_id: "2",
+    action: "user changed email",
+    resource_type: "user",
+    resource_id: "2"
+  },
+  %{
+    actor_type: "user",
+    actor_id: "2",
+    action: "user logged in",
+    resource_type: "user",
+    resource_id: "2"
+  },
+  %{
+    actor_type: "user",
+    actor_id: "2",
+    action: "user changed address",
+    resource_type: "user",
+    resource_id: "2"
+  },
+  %{
+    actor_type: "user",
+    actor_id: "1",
+    action: "user disabled",
+    resource_type: "user",
+    resource_id: "2"
+  },
+  %{
+    actor_type: "user",
+    actor_id: "1",
+    action: "user was deleted",
+    resource_type: "user",
+    resource_id: "2"
+  },
 ] |> Enum.each(fn attrs ->
   %BusinessAuditLog.AuditLog.LogEntry{}
   |> Map.merge(attrs)
