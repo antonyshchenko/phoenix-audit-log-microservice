@@ -1,0 +1,22 @@
+<h1>Business audit log</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Resource</th>
+      <th>Action</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for log_entry <- @entries do %>
+      <tr>
+        <td><%= log_entry.actor_type %>:<%= log_entry.actor_id %></td>
+        <td><%= log_entry.resource_type %>:<%= log_entry.resource_id %></td>
+        <td><%= log_entry.action %></td>
+        <td><%= log_entry.inserted_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

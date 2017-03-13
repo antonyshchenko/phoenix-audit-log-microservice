@@ -17,7 +17,7 @@ defmodule BusinessAuditLog.Web.Router do
     # Use the default browser stack
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", LogEntryController, :index
   end
 
   scope "/api", BusinessAuditLog.Web.Api, as: :api do
