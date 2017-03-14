@@ -20,15 +20,21 @@ This is a simple microservice developed to complement my talk about [Phoenix Fra
   * it has a web UI to display audit log entries
   * it has a web UI to tail audit log (new entries are broadcaset from server via websockets)
 
-## Running locally
+## Installation
 
-To start your Phoenix server:
-
-  * Start a Docker container with a database: `docker-compose up -d`
+  * Install Elixir: `brew install elixir`
+  * Install Node.js: `brew install node`
+  * Install Docker [https://docs.docker.com/docker-for-mac/install/](https://docs.docker.com/docker-for-mac/install/)
+  * Install aws cli: `brew install awscli`
+  * Add your AWS credentials to `~/.aws/credentials`
+  * Start a Docker container with database: `docker-compose up -d`
   * Install dependencies with `mix deps.get`
   * Create, migrate and populate your database with `mix ecto.setup`
   * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `QUEUE_NAME=<your AWS account>/<queue name> mix phx.server mix phx.server`
+
+## Running locally
+
+Start Phoenix endpoint with `QUEUE_NAME=<your AWS account>/<queue name> mix phx.server mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser and see list of audit log entries.
 
